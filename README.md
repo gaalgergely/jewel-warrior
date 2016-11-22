@@ -1,2 +1,2 @@
 # jewel-warrior
-Jewel Warrior
+Jewel Warrior HTML5 Game
