@@ -251,7 +251,7 @@ jewel.board = (function() {
         fillBoard();
         callback();
     }
-
+   
     function print() {
         var str = "";
         for (var y = 0; y < rows; y++) {

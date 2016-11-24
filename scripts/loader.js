@@ -14,6 +14,12 @@ Modernizr.addTest("standalone", function() {
     return (window.navigator.standalone != false);
 });
 
+// extend yepnope with preloading
+yepnope.addPrefix("preload", function(resource) {
+    resource.noexec = true;
+    return resource;
+});
+
 // loading stage 1
 Modernizr.load([
 { 
@@ -42,9 +48,15 @@ if (Modernizr.standalone) {
     Modernizr.load([
     {
         load : [
-            "scripts/screen.main-menu.js",
-            "scripts/board.js"
+            "scripts/screen.main-menu.js"
         ]
+    },{
+        test : Modernizr.webworkers,
+        yep : [
+            "scripts/board.worker-interface.js",
+            "preload!scripts/board.worker.js"
+        ],
+        nope : "scripts/board.js"
     }
     ]);
 }
