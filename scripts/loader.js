@@ -46,8 +46,6 @@ Modernizr.addTest("webgl2", function() {
 });
 
 
-
-
 // extend yepnope with preloading
 yepnope.addPrefix("preload", function(resource) {
     resource.noexec = true;
@@ -86,7 +84,11 @@ function getLoadProgress() {
 
 // loading stage 1
 Modernizr.load([
-{ 
+{
+    test : Modernizr.localstorage,
+    yep : "scripts/storage.js",
+    nope : "scripts/storage.cookie.js"
+},{ 
     load : [
         "scripts/sizzle.js",
         "scripts/dom.js",
@@ -108,7 +110,6 @@ Modernizr.load([
     }
 }
 ]);
-
 
 // loading stage 2
 if (Modernizr.standalone) {
@@ -139,6 +140,7 @@ if (Modernizr.standalone) {
         load : [
             "loader!scripts/audio.js",
             "loader!scripts/input.js",
+            "loader!scripts/screen.hiscore.js",
             "loader!scripts/screen.main-menu.js",
             "loader!scripts/screen.game.js",
             "loader!images/jewels"
